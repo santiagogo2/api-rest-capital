@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Notificaciones Contratación</title>
+	<style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap');
+        *,
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+        
+        .card {
+            padding: 0.5rem 1rem;
+            width: 100%;
+        }
+        
+        .title {
+            width: 100%;
+            font-size: 1.5rem;
+            padding: 1rem 1rem;
+            color: #6B006B;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid #6B006B;
+            text-transform: uppercase;
+        }
+        
+        .subtitle {
+            width: 100%;
+            font-size: 1.3rem;
+            color: #263B82;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0.5rem 0.3rem;
+        }
+        
+        p {
+            padding: 0.15rem 0.5rem;
+            color: #6B006B;
+        }
+        
+        .footer {
+            width: 100%;
+            font-size: 0.8rem;
+            padding: 1rem 1rem;
+            color: #6B006B;
+            font-weight: 400;
+            text-align: center;
+            border-top: 1px solid #6B006B;
+            max-width: 1000px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {{!-- <h1 class="title">CAPITAL SALUD EPS</h1> --}}
+        <div class="card">
+            {{!-- <h2 class="subtitle">Alerta Cambio Contratación</h2> --}}
+			<p>Hola</p>
+            <p>{{ descripcion }}</p>
+			{{#if fecha_creacion}}
+            	<p>Fecha y Hora: {{ fecha_creacion }}</p>
+			{{/if}}
+            <p>La función de este correo es únicamente informativa.</p>
+        </div>
+    </div>
+	<hr>
+</body>
+<footer>
+	<div class="footer">
+    	{{!-- © 2022 Capital Salud EPS --}}
+	</div>
+</footer>
+</html>
