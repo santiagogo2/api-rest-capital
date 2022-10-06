@@ -1,36 +1,33 @@
 # Backend del proyecto de contratación - Capital Salud EPS
 
-Para reconstruir los módulos de node se debe ejecutar el comando
----
-npm install
----
+Para reconstruir los módulos de node se debe ejecutar el comando `npm install`
 
 ## Archivo .env
 
 Para garantizar el funcionamiento de la aplicación se debe crear un archivo con la extensión .env en la raiz de los documentos con la siguiente información:
 
 Configuración de la base de datos
----
+```sh
 PORT=
 HOST=
 DATABASE=
 USER=
 PASSWORD=
----
+```
 
 Configuración del servidor del correo electrónico
----
+```sh
 MAIL_HOST=smtp.office365.com
 MAIL_PORT=587
 MAIL_USER=
 MAIL_PASSWORD=
----
+```
 
 Configuración para la conexión con el directorio activo ldap
----
+```sh
 LDAP_USER=
 LDAP_PASSWORD=
----
+```
 
 ## Build de producción
 

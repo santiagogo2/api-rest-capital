@@ -1,3 +1,4 @@
 # Eliminar los archivos que se pueden reconstruir con el npm install
 node_modules/
 uploads/contratacion/*
+.env
