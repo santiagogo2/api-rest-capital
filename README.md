@@ -23,10 +23,9 @@ MAIL_USER=
 MAIL_PASSWORD=
 ```
 
-Configuración para la conexión con el directorio activo ldap
+Configuración secret key
 ```sh
-LDAP_USER=
-LDAP_PASSWORD=
+JWT_SECRET=
 ```
 
 ## Build de producción
