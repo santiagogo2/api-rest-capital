@@ -53,7 +53,7 @@ const Precontractual = database.define('Precontractual', {
 		type: DataTypes.NUMBER,
 	},
 }, {
-	tableName: 'contratacion_precontractual'
+	tableName: 'tbl_contratacion_precontractual'
 });
 
 Precontractual.hasMany( ObservacionJuridica, {

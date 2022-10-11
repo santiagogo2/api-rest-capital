@@ -16,7 +16,7 @@ const ObservacionJuridica = connection_1.default.define('ObservacionJuridica', {
         type: sequelize_1.DataTypes.NUMBER,
     },
 }, {
-    tableName: 'contratacion_observaciones_juridica'
+    tableName: 'tbl_contratacion_observaciones_juridica'
 });
 exports.default = ObservacionJuridica;
 //# sourceMappingURL=ObservacionJuridica.js.map

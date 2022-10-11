@@ -7,7 +7,7 @@ import { enviarCorreoElectronicoContratacion } from "../../../controllers/nodema
 import ObservacionJuridica from '../models/ObservacionJuridica';
 import Precontractual from '../models/Precontractual';
 
-export const crearObservacionJuridica = async ( req: Request, res: Response ) => {
+export const crearObservacionJuridica = async ( req: Request | any, res: Response ) => {
 	let data: any = {};
 	const { body } = req;
 	const { estado } = req.params;
@@ -23,7 +23,7 @@ export const crearObservacionJuridica = async ( req: Request, res: Response ) =>
 				estado: estado
 			});
 			// Guardar el usuario logueado como creador del registro
-			body.created_by = 1;
+			body.created_by = req.usuario.user.employeeID;
 	
 			const observaciones = ObservacionJuridica.build( body );
 			await observaciones.save();

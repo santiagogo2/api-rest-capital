@@ -55,6 +55,19 @@ const autenticarUsuario = (req, res) => __awaiter(void 0, void 0, void 0, functi
             };
         });
         if (user) {
+            yield obtenerGruposPorUsuario(usuario, contraseña)
+                .then((res) => {
+                user.grupos = res;
+            })
+                .catch(err => {
+                data = {
+                    code: 500,
+                    status: 'error',
+                    message: err,
+                };
+            });
+        }
+        if (user.grupos) {
             // Generar el Token - JWT
             yield (0, jwt_1.generarJWT)(user)
                 .then(token => {
@@ -140,6 +153,32 @@ function autenticarUsuarioLDAP(usuario, contraseña) {
                 }
                 else {
                     reject('Autenticación fallida');
+                }
+            });
+        });
+    });
+}
+function obtenerGruposPorUsuario(usuario, contraseña) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => {
+            // Configuración LDAP
+            const config = {
+                url: 'LDAP://srvcsdcbog03.capitalsalud.loc',
+                baseDN: 'dc=capitalsalud,dc=loc',
+                username: usuario,
+                password: contraseña
+            };
+            const ad = new ActiveDirectory(config);
+            ad.getGroupMembershipForUser(usuario, (error, grupos) => {
+                if (error) {
+                    console.log('ERROR: ' + JSON.stringify(error));
+                    reject('Ha ocurrido un error al intentar consultar el usuario indicado');
+                }
+                if (!grupos) {
+                    reject('El usuario consultado no se ha encontrado en el directorio activo');
+                }
+                else {
+                    resolve(grupos);
                 }
             });
         });

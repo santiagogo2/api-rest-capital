@@ -3,20 +3,22 @@ import { check } from "express-validator";
 
 // Middlewares
 import validarCampos from "../../../middlewares/validar-campos";
+import { validarJWT } from '../../../middlewares/validar-jwt';
 
 // Controladores
 import { obtenerSolicitud, obtenerSolicitudesActivas, obtenerSolicitudesJuridica, obtenerSolicitudesPrecontractuales, crearSolicitudPrecontractual, actualizarSolicitudPrecontractual, eliminarSolicitudPrecontractual, obtenerSolicitudesPrecontractualesPorUsuario, actualizarEstadoSolicitudPrecontractual } from '../controllers/precontractual.controller';
 
 const router = Router();
 
-router.get('/', obtenerSolicitudesPrecontractuales);
-router.get('/:id', obtenerSolicitud);
-router.get('/adicionales/obtenerSolicitudesActivas', obtenerSolicitudesActivas);
-router.get('/adicionales/obtenerSolicitudesJuridica', obtenerSolicitudesJuridica);
-router.get('/adicionales/obtenerSolicitudesPrecontractualesPorUsuario', obtenerSolicitudesPrecontractualesPorUsuario);
-router.get('/adicionales/actualizarEstadoSolicitudPrecontractual/:id/:estado', actualizarEstadoSolicitudPrecontractual);
+router.get('/', validarJWT, obtenerSolicitudesPrecontractuales);
+router.get('/:id', validarJWT, obtenerSolicitud);
+router.get('/adicionales/obtenerSolicitudesActivas', validarJWT, obtenerSolicitudesActivas);
+router.get('/adicionales/obtenerSolicitudesJuridica', validarJWT, obtenerSolicitudesJuridica);
+router.get('/adicionales/obtenerSolicitudesPrecontractualesPorUsuario', validarJWT, obtenerSolicitudesPrecontractualesPorUsuario);
+router.get('/adicionales/actualizarEstadoSolicitudPrecontractual/:id/:estado', validarJWT, actualizarEstadoSolicitudPrecontractual);
 router.post('/',
 	[
+		validarJWT,
 		check('primer_nombre', 'El primer nombre es obligatorio').not().isEmpty(),
 		check('primer_apellido', 'El primer apellido es obligatorio').not().isEmpty(),
 		check('correo_electronico', 'El correo electrónico es obligatorio').not().isEmpty(),
@@ -32,6 +34,7 @@ router.post('/',
 crearSolicitudPrecontractual);
 router.put('/:id',
 	[
+		validarJWT,
 		check('primer_nombre', 'El primer nombre es obligatorio').not().isEmpty(),
 		check('primer_apellido', 'El primer apellido es obligatorio').not().isEmpty(),
 		check('correo_electronico', 'El correo electrónico es obligatorio').not().isEmpty(),
@@ -44,6 +47,6 @@ router.put('/:id',
 		validarCampos
 	],
 actualizarSolicitudPrecontractual);
-router.delete('/:id', eliminarSolicitudPrecontractual);
+router.delete('/:id', validarJWT, eliminarSolicitudPrecontractual);
 
 export default router;

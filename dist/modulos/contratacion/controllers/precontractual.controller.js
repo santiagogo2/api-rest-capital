@@ -184,7 +184,7 @@ const crearSolicitudPrecontractual = (req, res) => __awaiter(void 0, void 0, voi
         // Asignar el valor de creado al estado: 1
         body.estado = 1;
         // Guardar el usuario logueado como creador del registro
-        body.created_by = 1;
+        body.created_by = req.usuario.user.employeeID;
         const precontractual = Precontractual_1.default.build(body);
         yield precontractual.save();
         // Enviar un correo de notificación al usuario
@@ -483,7 +483,7 @@ exports.obtenerSolicitudesPrecontractuales = obtenerSolicitudesPrecontractuales;
 */
 const obtenerSolicitudesPrecontractualesPorUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let data = {};
-    let usuario_activo = 1;
+    let usuario_activo = req.usuario.user.employeeID;
     try {
         const precontractuales = yield Precontractual_1.default.findAll({
             where: {

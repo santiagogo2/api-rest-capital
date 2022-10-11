@@ -15,6 +15,9 @@ const Modulos = connection_1.default.define('Modulos', {
     clase: {
         type: sequelize_1.DataTypes.STRING
     },
+    grupo: {
+        type: sequelize_1.DataTypes.STRING
+    },
     estado: {
         type: sequelize_1.DataTypes.NUMBER,
     },
@@ -22,7 +25,7 @@ const Modulos = connection_1.default.define('Modulos', {
         type: sequelize_1.DataTypes.NUMBER,
     },
 }, {
-    tableName: 'modulos'
+    tableName: 'tbl_modulos'
 });
 exports.default = Modulos;
 //# sourceMappingURL=Modulo.js.map

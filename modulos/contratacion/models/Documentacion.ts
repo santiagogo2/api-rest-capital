@@ -30,7 +30,7 @@ const Documentacion = database.define('Documentacion', {
 		type: DataTypes.NUMBER,
 	},
 }, {
-	tableName: 'contratacion_documentacion'
+	tableName: 'tbl_contratacion_documentacion'
 });
 
 export default Documentacion;

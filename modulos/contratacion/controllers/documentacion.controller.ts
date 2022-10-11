@@ -150,13 +150,13 @@ export const actualizarEstadoDocumentoAdjunto = async ( req: Request, res: Respo
  * 
  * @returns 
 */
-export const crearDocumentoAdjunto = async ( req: Request, res: Response ) => {
+export const crearDocumentoAdjunto = async ( req: Request | any, res: Response ) => {
 	let data: any = {};
 	const { body } = req;
 
 	try {
 		// Guardar el usuario logueado como creador del registro
-		body.created_by = 1;
+		body.created_by = req.usuario.user.employeeID;
 		body.estado = 1;
 
 		const documentacion = Documentacion.build( body );

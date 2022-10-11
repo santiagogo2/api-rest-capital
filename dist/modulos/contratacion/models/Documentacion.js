@@ -31,7 +31,7 @@ const Documentacion = connection_1.default.define('Documentacion', {
         type: sequelize_1.DataTypes.NUMBER,
     },
 }, {
-    tableName: 'contratacion_documentacion'
+    tableName: 'tbl_contratacion_documentacion'
 });
 exports.default = Documentacion;
 //# sourceMappingURL=Documentacion.js.map

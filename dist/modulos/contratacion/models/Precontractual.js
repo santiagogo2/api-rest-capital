@@ -56,7 +56,7 @@ const Precontractual = connection_1.default.define('Precontractual', {
         type: sequelize_1.DataTypes.NUMBER,
     },
 }, {
-    tableName: 'contratacion_precontractual'
+    tableName: 'tbl_contratacion_precontractual'
 });
 Precontractual.hasMany(ObservacionJuridica_1.default, {
     as: 'comentarios_juridica',

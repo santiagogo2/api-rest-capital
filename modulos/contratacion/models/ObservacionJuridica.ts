@@ -12,7 +12,7 @@ const ObservacionJuridica = database.define('ObservacionJuridica', {
 		type: DataTypes.NUMBER,
 	},
 }, {
-	tableName: 'contratacion_observaciones_juridica'
+	tableName: 'tbl_contratacion_observaciones_juridica'
 });
 
 export default ObservacionJuridica;

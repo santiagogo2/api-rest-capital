@@ -11,6 +11,9 @@ const Modulos = database.define('Modulos', {
 	clase: {
 		type: DataTypes.STRING
 	},
+	grupo: {
+		type: DataTypes.STRING
+	},
 	estado: {
 		type: DataTypes.NUMBER,
 	},
@@ -18,7 +21,7 @@ const Modulos = database.define('Modulos', {
 		type: DataTypes.NUMBER,
 	},
 }, {
-	tableName: 'modulos'
+	tableName: 'tbl_modulos'
 });
 
 export default Modulos;

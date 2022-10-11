@@ -181,7 +181,7 @@ export const actualizarSolicitudPrecontractual = async ( req: Request, res: Resp
  * 
  * @returns 
 */
-export const crearSolicitudPrecontractual = async ( req: Request, res: Response ) => {
+export const crearSolicitudPrecontractual = async ( req: Request | any, res: Response ) => {
 	let data: any = {};
 	const { body } = req;
 
@@ -189,7 +189,7 @@ export const crearSolicitudPrecontractual = async ( req: Request, res: Response 
 		// Asignar el valor de creado al estado: 1
 		body.estado = 1;
 		// Guardar el usuario logueado como creador del registro
-		body.created_by = 1;
+		body.created_by = req.usuario.user.employeeID;
 
 		const precontractual = Precontractual.build( body );
 		await precontractual.save();
@@ -493,9 +493,9 @@ export const obtenerSolicitudesPrecontractuales = async ( req: Request, res: Res
  * 
  * @returns 
 */
-export const obtenerSolicitudesPrecontractualesPorUsuario = async ( req: Request, res: Response ) => {
+export const obtenerSolicitudesPrecontractualesPorUsuario = async ( req: Request | any, res: Response ) => {
 	let data: any = {};
-	let usuario_activo = 1;
+	let usuario_activo = req.usuario.user.employeeID;
 
 	try {
 		const precontractuales = await Precontractual.findAll({

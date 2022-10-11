@@ -27,7 +27,7 @@ const Presupuesto = database.define('Presupuesto', {
 		type: DataTypes.NUMBER,
 	},
 }, {
-	tableName: 'contratacion_presupuesto'
+	tableName: 'tbl_contratacion_presupuesto'
 });
 
 export default Presupuesto;

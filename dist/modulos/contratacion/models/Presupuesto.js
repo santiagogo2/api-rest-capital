@@ -28,7 +28,7 @@ const Presupuesto = connection_1.default.define('Presupuesto', {
         type: sequelize_1.DataTypes.NUMBER,
     },
 }, {
-    tableName: 'contratacion_presupuesto'
+    tableName: 'tbl_contratacion_presupuesto'
 });
 exports.default = Presupuesto;
 //# sourceMappingURL=Presupuesto.js.map

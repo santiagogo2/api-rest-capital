@@ -32,7 +32,7 @@ const crearObservacionJuridica = (req, res) => __awaiter(void 0, void 0, void 0,
                 estado: estado
             });
             // Guardar el usuario logueado como creador del registro
-            body.created_by = 1;
+            body.created_by = req.usuario.user.employeeID;
             const observaciones = ObservacionJuridica_1.default.build(body);
             yield observaciones.save();
             // Enviar un correo de notificación al usuario

@@ -9,15 +9,18 @@ const express_validator_1 = require("express-validator");
 const validar_campos_1 = __importDefault(require("../../../middlewares/validar-campos"));
 // Controladores
 const presupuesto_controller_1 = require("../controllers/presupuesto.controller");
+const validar_jwt_1 = require("../../../middlewares/validar-jwt");
 const router = (0, express_1.Router)();
-router.get('/adicionales/obtenerSolicitudesActivas', presupuesto_controller_1.obtenerSolicitudesActivas);
-router.get('/:id', presupuesto_controller_1.obtenerSolicitudPresupuesto);
+router.get('/adicionales/obtenerSolicitudesActivas', validar_jwt_1.validarJWT, presupuesto_controller_1.obtenerSolicitudesActivas);
+router.get('/:id', validar_jwt_1.validarJWT, presupuesto_controller_1.obtenerSolicitudPresupuesto);
 router.post('/', [
+    validar_jwt_1.validarJWT,
     (0, express_validator_1.check)('precontractual_id', 'El id de la solicitud precontractual es requerido').not().isEmpty(),
     (0, express_validator_1.check)('descripcion', 'Debe ingresar la descripción de la solicitud presupuestal').not().isEmpty(),
     validar_campos_1.default
 ], presupuesto_controller_1.crearCDPCRPPresupuesto);
 router.put('/:id', [
+    validar_jwt_1.validarJWT,
     (0, express_validator_1.check)('motivo', 'Debe ingresar la respuesta de la solicitud presupuestal').not().isEmpty(),
     (0, express_validator_1.check)('descripcion', 'Debe ingresar la descripción de la solicitud presupuestal').not().isEmpty(),
     (0, express_validator_1.check)('tipo_certificado', 'Debe ingresar el tipo de certificado').not().isEmpty(),

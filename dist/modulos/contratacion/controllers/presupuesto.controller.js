@@ -120,7 +120,7 @@ const crearCDPCRPPresupuesto = (req, res) => __awaiter(void 0, void 0, void 0, f
         // Asignar el estado a una nueva solicitud
         body.estado = 1;
         // Guardar el usuario logueado como creador del registro
-        body.created_by = 1;
+        body.created_by = req.usuario.user.employeeID;
         const presupuesto = Presupuesto_1.default.build(body);
         yield presupuesto.save();
         let tipo_certificado = (presupuesto === null || presupuesto === void 0 ? void 0 : presupuesto.getDataValue('tipo_certificado')) == 1 ? 'CDP' : 'CRP';

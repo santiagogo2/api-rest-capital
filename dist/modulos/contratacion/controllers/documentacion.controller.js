@@ -155,7 +155,7 @@ const crearDocumentoAdjunto = (req, res) => __awaiter(void 0, void 0, void 0, fu
     const { body } = req;
     try {
         // Guardar el usuario logueado como creador del registro
-        body.created_by = 1;
+        body.created_by = req.usuario.user.employeeID;
         body.estado = 1;
         const documentacion = Documentacion_1.default.build(body);
         yield documentacion.save();

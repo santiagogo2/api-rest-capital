@@ -112,7 +112,7 @@ export const actualizarSolicitudPresupuestal = async ( req: Request, res: Respon
  * 
  * @returns 
 */
-export const crearCDPCRPPresupuesto = async ( req: Request, res: Response ) => {
+export const crearCDPCRPPresupuesto = async ( req: Request | any, res: Response ) => {
 	let data: any = {};
 	const { body } = req;
 
@@ -120,7 +120,7 @@ export const crearCDPCRPPresupuesto = async ( req: Request, res: Response ) => {
 		// Asignar el estado a una nueva solicitud
 		body.estado = 1;
 		// Guardar el usuario logueado como creador del registro
-		body.created_by = 1;
+		body.created_by = req.usuario.user.employeeID;
 
 		const presupuesto = Presupuesto.build( body );
 		await presupuesto.save();
