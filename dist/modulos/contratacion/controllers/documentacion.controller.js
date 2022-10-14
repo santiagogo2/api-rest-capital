@@ -63,7 +63,7 @@ const actualizarDocumentoAdjunto = (req, res) => __awaiter(void 0, void 0, void 
             data = {
                 code: 200,
                 status: 'success',
-                message: 'Se ha actualizado el documento con el número de consecutivo ' + id,
+                message: 'Se ha actualizado el documento para la solicitud con el consecutivo ' + (documentacion === null || documentacion === void 0 ? void 0 : documentacion.getDataValue('precontractual_id')),
                 documentacion
             };
         }

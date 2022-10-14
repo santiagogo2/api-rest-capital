@@ -44,7 +44,7 @@ export const actualizarDocumentoAdjunto = async ( req: Request, res: Response ) 
 					}
 				});
 			}
-
+			
 			// Eliminar los campos que no se desean actualizar
 			delete( body.id );
 			delete( body.precontractual_id );
@@ -58,7 +58,7 @@ export const actualizarDocumentoAdjunto = async ( req: Request, res: Response ) 
 			data = {
 				code: 200,
 				status: 'success',
-				message: 'Se ha actualizado el documento con el número de consecutivo ' + id,
+				message: 'Se ha actualizado el documento para la solicitud con el consecutivo ' + documentacion?.getDataValue('precontractual_id'),
 				documentacion
 			}
 
