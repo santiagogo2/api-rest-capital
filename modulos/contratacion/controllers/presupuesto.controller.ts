@@ -171,6 +171,9 @@ export const obtenerSolicitudes = async ( req: Request, res: Response ) => {
 
 	try {
 		const presupuestos = await Presupuesto.findAll({
+			where: {
+				estado: 2
+			},
 			include: [
 				{
 					model: Precontractual,
