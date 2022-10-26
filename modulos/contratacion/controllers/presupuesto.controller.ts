@@ -155,6 +155,62 @@ export const crearCDPCRPPresupuesto = async ( req: Request | any, res: Response 
 }
 
 /**
+ * Controlador que obtiene todas las solicitudes para el área de presupuesto
+ * @name		obtenerSolicitudes
+ * @author		Santiago Ramirez Gaitan <santiagooo42@gmail.com>
+ * @version		1.0.0
+ * @access		public
+ * 
+ * @param 		{Request} req
+ * @param 		{Response} res
+ * 
+ * @returns 
+*/
+export const obtenerSolicitudes = async ( req: Request, res: Response ) => {
+	let data: any = {};
+	const { id } = req.params;
+
+	try {
+		const presupuestos = await Presupuesto.findAll({
+			include: [
+				{
+					model: Precontractual,
+					as: 'solicitud_precontractual'
+				}
+			],
+			order: [
+				[ 'createdAt', 'DESC' ]
+			]
+		});
+
+		if( presupuestos ) {
+			data = {
+				code: 200,
+				status: 'success',
+				presupuestos
+			}
+		} else {
+			data = {
+				code: 404,
+				status: 'error',
+				message: 'No se han encontrado solicitudes para el área de presupuesto'
+			}
+		}
+		
+	} catch (error) {
+		data = {
+			code: 500,
+			status: 'error',
+			message: 'Ha ocurrido un error en el servidor, pongase en contacto con el administrador',
+			error
+		}		
+	}
+
+	// Devolver la respuesta
+	res.status(data.code).json(data);
+}
+
+/**
  * Controlador que obtiene las solicitudes activas para el área de presupuesto
  * @name		obtenerSolicitudesActivas
  * @author		Santiago Ramirez Gaitan <santiagooo42@gmail.com>

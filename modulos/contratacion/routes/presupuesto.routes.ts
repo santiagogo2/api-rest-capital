@@ -5,11 +5,12 @@ import { check } from "express-validator";
 import validarCampos from "../../../middlewares/validar-campos";
 
 // Controladores
-import { actualizarSolicitudPresupuestal, crearCDPCRPPresupuesto, obtenerSolicitudesActivas, obtenerSolicitudPresupuesto } from '../controllers/presupuesto.controller';
+import { actualizarSolicitudPresupuestal, crearCDPCRPPresupuesto, obtenerSolicitudes, obtenerSolicitudesActivas, obtenerSolicitudPresupuesto } from '../controllers/presupuesto.controller';
 import { validarJWT } from '../../../middlewares/validar-jwt';
 
 const router = Router();
 
+router.get('/adicionales/obtenerSolicitudes', validarJWT, obtenerSolicitudes);
 router.get('/adicionales/obtenerSolicitudesActivas', validarJWT, obtenerSolicitudesActivas);
 router.get('/:id', validarJWT, obtenerSolicitudPresupuesto);
 router.post('/',
