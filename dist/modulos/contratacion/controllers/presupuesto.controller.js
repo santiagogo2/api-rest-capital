@@ -168,7 +168,7 @@ const obtenerSolicitudes = (req, res) => __awaiter(void 0, void 0, void 0, funct
     try {
         const presupuestos = yield Presupuesto_1.default.findAll({
             where: {
-                estado: 1
+                estado: 2
             },
             include: [
                 {

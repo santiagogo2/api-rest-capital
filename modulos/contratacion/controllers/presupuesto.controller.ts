@@ -172,7 +172,7 @@ export const obtenerSolicitudes = async ( req: Request, res: Response ) => {
 	try {
 		const presupuestos = await Presupuesto.findAll({
 			where: {
-				estado: 1
+				estado: 2
 			},
 			include: [
 				{
