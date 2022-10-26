@@ -165,9 +165,11 @@ exports.crearCDPCRPPresupuesto = crearCDPCRPPresupuesto;
 */
 const obtenerSolicitudes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let data = {};
-    const { id } = req.params;
     try {
         const presupuestos = yield Presupuesto_1.default.findAll({
+            where: {
+                estado: 1
+            },
             include: [
                 {
                     model: Precontractual_1.default,
@@ -219,7 +221,6 @@ exports.obtenerSolicitudes = obtenerSolicitudes;
 */
 const obtenerSolicitudesActivas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let data = {};
-    const { id } = req.params;
     try {
         const presupuestos = yield Presupuesto_1.default.findAll({
             where: {

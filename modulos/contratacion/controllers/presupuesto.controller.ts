@@ -168,10 +168,12 @@ export const crearCDPCRPPresupuesto = async ( req: Request | any, res: Response 
 */
 export const obtenerSolicitudes = async ( req: Request, res: Response ) => {
 	let data: any = {};
-	const { id } = req.params;
 
 	try {
 		const presupuestos = await Presupuesto.findAll({
+			where: {
+				estado: 1
+			},
 			include: [
 				{
 					model: Precontractual,
@@ -224,7 +226,6 @@ export const obtenerSolicitudes = async ( req: Request, res: Response ) => {
 */
 export const obtenerSolicitudesActivas = async ( req: Request, res: Response ) => {
 	let data: any = {};
-	const { id } = req.params;
 
 	try {
 		const presupuestos = await Presupuesto.findAll({
