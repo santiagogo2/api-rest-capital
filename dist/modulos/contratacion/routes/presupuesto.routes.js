@@ -11,7 +11,7 @@ const validar_campos_1 = __importDefault(require("../../../middlewares/validar-c
 const presupuesto_controller_1 = require("../controllers/presupuesto.controller");
 const validar_jwt_1 = require("../../../middlewares/validar-jwt");
 const router = (0, express_1.Router)();
-router.get('/adicionales/obtenerSolicitudes', validar_jwt_1.validarJWT, presupuesto_controller_1.obtenerSolicitudesActivas);
+router.get('/adicionales/obtenerSolicitudes', validar_jwt_1.validarJWT, presupuesto_controller_1.obtenerSolicitudes);
 router.get('/adicionales/obtenerSolicitudesActivas', validar_jwt_1.validarJWT, presupuesto_controller_1.obtenerSolicitudesActivas);
 router.get('/:id', validar_jwt_1.validarJWT, presupuesto_controller_1.obtenerSolicitudPresupuesto);
 router.post('/', [
