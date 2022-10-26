@@ -10,7 +10,7 @@ import { validarJWT } from '../../../middlewares/validar-jwt';
 
 const router = Router();
 
-// router.get('/adicionales/obtenerSolicitudes', validarJWT, obtenerSolicitudes);
+router.get('/adicionales/obtenerSolicitudes', validarJWT, obtenerSolicitudes);
 router.get('/adicionales/obtenerSolicitudesActivas', validarJWT, obtenerSolicitudesActivas);
 router.get('/:id', validarJWT, obtenerSolicitudPresupuesto);
 router.post('/',
