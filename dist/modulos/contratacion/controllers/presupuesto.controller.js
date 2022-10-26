@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.obtenerSolicitudPresupuesto = exports.obtenerSolicitudesActivas = exports.crearCDPCRPPresupuesto = exports.actualizarSolicitudPresupuestal = void 0;
+exports.obtenerSolicitudPresupuesto = exports.obtenerSolicitudesActivas = exports.obtenerSolicitudes = exports.crearCDPCRPPresupuesto = exports.actualizarSolicitudPresupuestal = void 0;
 const fs_1 = __importDefault(require("fs"));
 // Importar funciones
 const nodemailer_controller_1 = require("../../../controllers/nodemailer.controller");
@@ -151,6 +151,60 @@ const crearCDPCRPPresupuesto = (req, res) => __awaiter(void 0, void 0, void 0, f
     res.status(data.code).json(data);
 });
 exports.crearCDPCRPPresupuesto = crearCDPCRPPresupuesto;
+/**
+ * Controlador que obtiene todas las solicitudes para el área de presupuesto
+ * @name		obtenerSolicitudes
+ * @author		Santiago Ramirez Gaitan <santiagooo42@gmail.com>
+ * @version		1.0.0
+ * @access		public
+ *
+ * @param 		{Request} req
+ * @param 		{Response} res
+ *
+ * @returns
+*/
+const obtenerSolicitudes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let data = {};
+    const { id } = req.params;
+    try {
+        const presupuestos = yield Presupuesto_1.default.findAll({
+            include: [
+                {
+                    model: Precontractual_1.default,
+                    as: 'solicitud_precontractual'
+                }
+            ],
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        });
+        if (presupuestos) {
+            data = {
+                code: 200,
+                status: 'success',
+                presupuestos
+            };
+        }
+        else {
+            data = {
+                code: 404,
+                status: 'error',
+                message: 'No se han encontrado solicitudes para el área de presupuesto'
+            };
+        }
+    }
+    catch (error) {
+        data = {
+            code: 500,
+            status: 'error',
+            message: 'Ha ocurrido un error en el servidor, pongase en contacto con el administrador',
+            error
+        };
+    }
+    // Devolver la respuesta
+    res.status(data.code).json(data);
+});
+exports.obtenerSolicitudes = obtenerSolicitudes;
 /**
  * Controlador que obtiene las solicitudes activas para el área de presupuesto
  * @name		obtenerSolicitudesActivas
