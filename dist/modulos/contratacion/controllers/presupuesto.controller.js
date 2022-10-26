@@ -167,9 +167,6 @@ const obtenerSolicitudes = (req, res) => __awaiter(void 0, void 0, void 0, funct
     let data = {};
     try {
         const presupuestos = yield Presupuesto_1.default.findAll({
-            where: {
-                estado: 2
-            },
             include: [
                 {
                     model: Precontractual_1.default,
