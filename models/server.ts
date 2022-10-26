@@ -77,9 +77,9 @@ class Server {
 		this.app.use( this.api_paths.usuarios, userRoutes );
 
 		// Ruta que le permite a la aplicación usar siempre la ruta base para no perder la configuración de angular
-		this.app.get('*', (req, res) => {
-			res.sendFile( path.resolve(__dirname, '../../public/index.html') );
-		});
+		// this.app.get('*', (req, res) => {
+		// 	res.sendFile( path.resolve(__dirname, '../../public/index.html') );
+		// });
 	}
 }
 

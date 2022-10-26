@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const path_1 = __importDefault(require("path"));
 // Rutas
 const documentacion_routes_1 = __importDefault(require("../modulos/contratacion/routes/documentacion.routes"));
 const juridica_routes_1 = __importDefault(require("../modulos/contratacion/routes/juridica.routes"));
@@ -77,9 +76,9 @@ class Server {
         this.app.use(this.api_paths.uploads, uploads_routes_1.default);
         this.app.use(this.api_paths.usuarios, usuarios_routes_1.default);
         // Ruta que le permite a la aplicación usar siempre la ruta base para no perder la configuración de angular
-        this.app.get('*', (req, res) => {
-            res.sendFile(path_1.default.resolve(__dirname, '../../public/index.html'));
-        });
+        // this.app.get('*', (req, res) => {
+        // 	res.sendFile( path.resolve(__dirname, '../../public/index.html') );
+        // });
     }
 }
 exports.default = Server;
