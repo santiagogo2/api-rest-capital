@@ -41,13 +41,13 @@ const Precontractual = database.define('Precontractual', {
 		type: DataTypes.STRING,
 	},
 	fecha_comite_contratacion: {
-		type: DataTypes.DATE,
+		type: DataTypes.STRING,
 	},
 	estado: {
 		type: DataTypes.NUMBER,
 	},
 	fecha_respuesta: {
-		type: DataTypes.DATE,
+		type: DataTypes.STRING,
 	},
 	created_by: {
 		type: DataTypes.NUMBER,

@@ -44,13 +44,13 @@ const Precontractual = connection_1.default.define('Precontractual', {
         type: sequelize_1.DataTypes.STRING,
     },
     fecha_comite_contratacion: {
-        type: sequelize_1.DataTypes.DATE,
+        type: sequelize_1.DataTypes.STRING,
     },
     estado: {
         type: sequelize_1.DataTypes.NUMBER,
     },
     fecha_respuesta: {
-        type: sequelize_1.DataTypes.DATE,
+        type: sequelize_1.DataTypes.STRING,
     },
     created_by: {
         type: sequelize_1.DataTypes.NUMBER,

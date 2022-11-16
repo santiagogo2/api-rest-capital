@@ -158,7 +158,7 @@ export const crearDocumentoAdjunto = async ( req: Request | any, res: Response )
 		// Guardar el usuario logueado como creador del registro
 		body.created_by = req.usuario.user.employeeID;
 		body.estado = 1;
-
+		
 		const documentacion = Documentacion.build( body );
 		await documentacion.save();
 
