@@ -19,7 +19,7 @@ const Documentacion = connection_1.default.define('Documentacion', {
         type: sequelize_1.DataTypes.NUMBER,
     },
     fecha_vigencia: {
-        type: sequelize_1.DataTypes.DATE,
+        type: sequelize_1.DataTypes.STRING,
     },
     observacion: {
         type: sequelize_1.DataTypes.STRING,
