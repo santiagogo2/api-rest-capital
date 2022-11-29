@@ -18,7 +18,7 @@ const Documentacion = database.define('Documentacion', {
 		type: DataTypes.NUMBER,
 	},
 	fecha_vigencia: {
-		type: DataTypes.DATE,
+		type: DataTypes.STRING,
 	},
 	observacion: {
 		type: DataTypes.STRING,
